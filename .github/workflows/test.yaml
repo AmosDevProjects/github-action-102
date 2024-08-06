@@ -1,0 +1,47 @@
+name: checkout code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+#  workflow_dispatch: 
+#  push:
+#    branches:
+#      - main
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: event name
+        run: echo ${{ github.event_name }}
+
+      - name: checkout 
+        uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.3"
+
+      - name: init
+        run: terraform init
+
+      - name: format
+        run: terraform fmt
+
+      - name: plan
+        run: terraform plan
+    #    if: github.event_name == 'pull_request'
+
+    #  - name: apply 
+    #    run: terraform destroy --auto-approve
+    #    if:  github.event_name == 'push' && github.ref == 'refs/heads/main' 
+
