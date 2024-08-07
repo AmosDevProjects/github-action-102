@@ -33,7 +33,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   }
 }
 
-# SNS
+# Added SNS topic
 resource "aws_sns_topic_subscription" "email" {
   endpoint  = "amos.egonmwan@hotmail.com"
   protocol  = "email"
