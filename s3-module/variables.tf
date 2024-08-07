@@ -18,3 +18,8 @@ variable "env" {
   type = string
   #default = "prod"
 }
+
+# Variable
+variable "region" {
+  type = string
+}
