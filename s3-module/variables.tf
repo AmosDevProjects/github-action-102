@@ -13,6 +13,7 @@ variable "my_bucket" {
   #default = "wemadevop"
 }
 
+# Variable
 variable "env" {
   type = string
   #default = "prod"
