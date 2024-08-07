@@ -5,7 +5,7 @@ variable "topic_name" {
 
 variable "team" {
   type = string
-  #default = "dev"
+  ##default = "dev"
 }
 
 variable "my_bucket" {
